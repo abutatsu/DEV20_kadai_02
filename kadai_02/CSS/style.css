@@ -1,0 +1,271 @@
+
+/* 全体の設定 */
+html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    font-size: 1.4em;
+  }
+
+.wrap__header {
+  width:960px;
+  margin:0 auto;
+  }
+
+/* heafer */
+
+
+header {
+	width: auto;
+	height: 180px;
+	background: linear-gradient(225deg, rgba(248, 229, 197, 0.8), rgba(190, 218, 245, 0.8)),url(../img/shikaku-image01-945x280.jpg)center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+  }
+
+.maintitle{
+	padding-top: 10px;
+    color: #696969;
+    font-size: 2.0rem;
+    display: none;
+	font-family: 'Train One', cursive;
+	text-align: center;
+	
+}
+
+.maintitle p{
+	font-size: 1.4rem;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	font-weight: bold;
+}
+
+/* body構成 */
+.sidenavi {
+  height: 100%;
+  width: 100%;
+  min-height: 300px;
+  /* display: flex; */
+  flex-wrap: wrap;
+  flex-direction: column;
+  }
+
+.nyuuryoku{
+	display: flex;
+	justify-content: space-between;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+display: block;
+}
+
+/* tabリスト */
+.cp_tab *, .cp_tab *:before, .cp_tab *:after {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.cp_tab {
+	margin: 1em auto;
+	position: relative;
+}
+.cp_tab input[type='radio'] {
+	margin: 0;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	background: none;
+	-webkit-appearance: none;
+	        appearance: none;
+	display: none;
+}
+.cp_tab .cp_tabpanel {
+	display: none;
+}
+.cp_tab > input:first-child:checked ~ .cp_tabpanels > .cp_tabpanel:first-child,
+.cp_tab > input:nth-child(3):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(2),
+.cp_tab > input:nth-child(5):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(3),
+.cp_tab > input:nth-child(7):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(4),
+.cp_tab > input:nth-child(9):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(5),
+.cp_tab > input:nth-child(11):checked ~ .cp_tabpanels > .cp_tabpanel:nth-child(6) {
+	display: block;
+}
+.cp_tab .cp_tabpanels {
+	position: absolute;
+	top:0;
+	left: 10em;
+	display: block;
+	height: 320px;
+}
+.cp_tab > input + label {
+	position: relative;
+	z-index: 100;
+	top: -15px;
+	left: 1px;
+	display: block;
+	width: 10em;
+	/* margin-bottom: -20px; */
+	padding: 15px;
+	cursor: pointer;
+	border: 1px solid #cccccc;
+	border-right: 0;
+	border-radius: 6px 0 0 6px;
+}
+.cp_tab > input + label:last-of-type {
+	margin-bottom: 100px;
+}
+.cp_tab > label:hover,
+.cp_tab > input:focus + label {
+	color: #0066cc;
+}
+.cp_tab > input:checked + label {
+	border-color: #cccccc;
+	border-right: 1px solid #ffffff;/*背景色と同じ*/
+}
+.cp_tab .cp_tabpanel {
+	padding: 0.5em 1em;
+	border-left: 1px solid #cccccc;
+	min-height: 500px;
+}
+
+
+@media (max-width: 480px) {
+	.cp_tab {
+		width: 100%;
+	}
+	.cp_tab > input + label {
+	font-size: 0.7em;
+	}
+	.cp_tab .cp_tabpanels {
+	left: 7em;
+	min-width: 7em;
+	}
+}
+
+/* table固定 */
+#fixtable{
+	width: 100%;
+	border-collapse:separate;
+	border-spacing: 0;
+}
+  
+#fixtable th:first-child{
+	border-radius: 5px 0 0 0;
+}
+  
+#fixtable th:last-child{
+	border-radius: 0 5px 0 0;
+	border-right: 1px solid #3c6690;
+}
+  
+#fixtable th{
+	text-align: center;
+	color:white;
+	background: linear-gradient(#829ebc,#225588);
+	border-left: 1px solid #3c6690;
+	border-top: 1px solid #3c6690;
+	border-bottom: 1px solid #3c6690;
+	box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+	/* width: 20%; */
+	padding: 10px 0;
+}
+
+.fixtable{
+	font-size: 2.0rem;
+	/* table-layout: fixed;
+	width: 100%; */
+	margin-top: 20px;
+	border: 1px solid #8dc3f5;
+	width: 100%;
+}
+
+th.width10 {
+	width: 10%;
+}
+th.width60 {
+	width: 60%;
+}
+
+/* 挿入欄 */
+#list{
+	width: 100%;
+}
+
+#list th{
+	border-collapse:  collapse;
+	border: solid 0.75px;
+	
+}
+
+#list th .width60{
+	width: 50%;
+}
+
+/* 追加・削除 */
+ul {
+	padding: 0;
+	border-top: 1px solid #000000;
+	display: table; /* 定義 */
+	table-layout: fixed;
+	width: 100%;
+	font-size: 100%;
+	margin-bottom:20px;
+	text-align: center;
+}
+
+  li {
+	list-style-type: none;
+	border: 1px solid #666;
+	background-color: #fff;
+	display: table-cell; /* 定義 */
+	cursor: pointer;
+	color: #0d7dfd;
+  }
+  li:hover {
+	background: #0d7dfd;
+	color: #fff;
+  }
+  textarea {
+	margin: 10px 3%;
+	width: 95%;
+	height: 100px;
+	font-size: 80%;
+	box-shadow: 3px 3px 3px 3px #555;
+	background-color: rgb(241, 239, 239);
+  }
+  #key {
+	margin: 0 3%;
+	width: 95%;
+	font-size: 80%;
+	background-color: #e1efff;
+	box-shadow: 3px 3px 3px 3px #555;
+  }
+  
+  #fixtable th {
+	
+	font-size: 2.0rem;
+	background-color: #d0e7fc;
+	border-bottom: 1px solid #8dc3f5;
+  }
+  #fixtable td {
+	font-size: 16px;
+	background-color: rgb(241, 239, 239);
+	border-bottom: 1px solid #8dc3f5;
+  }
+  input {
+	margin: 10px 0;
+	width: 100%;
+	height: 40px;
+	font-size: 80%;
+  }
+
+/* footerの構成 */
+footer {
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+  text-align: center;
+  width: 960px;
+  }
+  

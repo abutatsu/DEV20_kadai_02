@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工事チェックリスト「残-ZAN-」</title>
+    <meta name="description" content="「ZAN」は工事竣工後の残工事・是正工事・変更、追加工事を管理するアプリです。">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Train+One&display=swap" rel="stylesheet">
+    <style type="text/css">
+    .done{
+         text-decoration:line-through ;
+     }
+    </style>
+
+</head>
+<body>
+<div class="wrap__header">
+    <header>   
+        <div class="maintitle">
+            <h1 class="maintext">Z　A　N</h1>
+            <p class="subtext">工事チェックリスト</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="sidenavi">
+            <div class="cp_tab">
+                <input type="radio" name="cp_tab" id="tab2_1" aria-controls="first_tab02" checked>
+                <label for="tab2_1">〇〇工事</label>
+                <input type="radio" name="cp_tab" id="tab2_2" aria-controls="second_tab02">
+                <label for="tab2_2">☓☓工事</label>
+                <input type="radio" name="cp_tab" id="tab2_3" aria-controls="third_tab02">
+                <label for="tab2_3">△△工事</label>
+                <input type="radio" name="cp_tab" id="tab2_4" aria-controls="force_tab02">
+                <label for="tab2_4">□□工事</label>
+                <div class="cp_tabpanels">
+                    <div class="cp_tabpanel">
+                    <h2>〇〇工事</h2>
+
+                    <!-- *************
+                           入力欄
+                     *****************-->
+                    <div class="nyuuryoku">
+                        <input type="text" id="hoge1" value="" placeholder="種別(残工事・是正・変更)">
+                        <input type="text" id="hoge2" value="" placeholder="業者">
+                        <input type="text" id="hoge3" value="" placeholder="場所">
+                    </div>
+                    <input type="text" id="hoge4" value="" placeholder="内容">
+
+                    <!-- 追加・削除 -->
+                    <ul>
+                        <li id="save">追加</li>
+                        <li id="clear">削除</li>
+                    </ul>
+
+                    <!-- 固定項目 -->
+                    <table id="fixtable">
+                        <tr>
+                            <th class="width10">種別</th>
+                            <th class="width10">業者</th>
+                            <th class="width10">場所</th>
+                            <th class="width60">内容</th>
+                            <th>完了</th>
+                        </tr>
+                    </table>
+
+                    <table id="list">
+                        <!-- ここに追加データが挿入される -->    
+                    </table>
+                    </div>
+                    <div class="cp_tabpanel">
+
+                    <h2>☓☓工事</h2>
+                    
+                    <!-- *************
+                           入力欄
+                     *****************-->
+                     <div class="nyuuryoku">
+                        <input type="text" id="hoge1" value="" placeholder="種別(残工事・是正・変更)">
+                        <input type="text" id="hoge2" value="" placeholder="業者">
+                        <input type="text" id="hoge3" value="" placeholder="場所">
+                    </div>
+                    <input type="text" id="hoge4" value="" placeholder="内容">
+
+                    <!-- 追加・削除 -->
+                    <ul>
+                        <li id="save">追加</li>
+                        <li id="clear">削除</li>
+                    </ul>
+
+                    <!-- 固定項目 -->
+                    <table id="fixtable">
+                        <tr>
+                            <th class="width10">種別</th>
+                            <th class="width10">業者</th>
+                            <th class="width10">場所</th>
+                            <th class="width60">内容</th>
+                            <th>完了</th>
+                        </tr>
+                    </table>
+
+                    <table id="list">
+                        <!-- ここに追加データが挿入される -->    
+                    </table>
+
+                    </div>
+                    <div class="cp_tabpanel">
+                    <h2>△△工事</h2>
+                    <p>Third Tab text</p>
+                    </div>
+                    <div class="cp_tabpanel">
+                    <h2>□□工事</h2>
+                    <p>Force Tab text</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <small>(c) G's Reserved.</small>
+    </footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(function(){
+    $(".maintitle").fadeIn("slow");
+});
+
+//1.Save クリックイベント
+
+$("#save").on("click",function(){
+    const data1 = $("#hoge1").val();
+    const data2 = $("#hoge2").val();
+    const data3 = $("#hoge3").val();
+    const data4 = $("#hoge4").val();
+
+    var obj = {
+    data2,data3,data4
+    };
+    
+    var obj = JSON.stringify(obj);
+    localStorage.setItem(data1, obj);
+    // var obj = JSON.getItem('Key');
+    // var html = JSON.parse(obj);
+    const html = '<tr><th class="width10">'+data1+'</th><th class="width10">'+data2+'</th><th class="width10">'+data3+'</th><th class="width60">'+data4+'</th><th class="width10"><button>done</button></th></tr>';
+
+    $("#list").append(html);
+
+    $("#hoge1").val("");
+    $("#hoge2").val("");
+    $("#hoge3").val("");
+    $("#hoge4").val("");
+});
+
+//2.clear クリックイベント
+$("#clear").on("click",function(){
+    localStorage.clear();
+    $("#list").empty();
+});
+
+
+//3.ページ読み込み：保存データ取得表示
+for(let i=0; i<localStorage.length; i++){
+    const key   = localStorage.key(i);
+    value = JSON.parse(localStorage.getItem(key));
+    const data1 = key;
+    const html = '<tr><th class="width10">'+data1+'</th><th class="width10">'+value.data2+'</th><th class="width10">'+value.data3+'</th><th class="width60">'+value.data4+'</th><th class="width10"><button>done</button></th></tr>';
+    $("#list").append(html);
+}
+    
+//4. 完了ボタン
+
+// const buttonList = document.querySelectorAll("button");
+//         [...buttonList].forEach((button) => {
+//             button.addEventListener("click",() =>{
+//             const li = button.parents(th);
+//             li.classList.add("done");
+//             });
+// })
+
+
+</script>
+
+</body>
+</html>
